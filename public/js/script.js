@@ -4,7 +4,7 @@ const outputbot = document.querySelector(".output-bot");
 
 const socket = io();
 
-const SpeechRecognition = window.SpeechRecognition;
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
 const recognition = new SpeechRecognition();
 
@@ -23,4 +23,17 @@ recognition.onresult = function(event){
   outputme.textContent = text;
   socket.emit("chat msg", text);
 }
+
+const botReply = (text) => {
+  const synth = window.speechSynthesis;
+  const utterance = new SpeechSynthesisUtterance();
+  utterance.text = text;
+  utterance.pitch = 1;
+  utterance.voice = 1;
+  synth.speak(utterance);
+}
+socket.on('bot reply', (text) => {
+  outputbot.textContent = text;
+  botReply(text);
+});
 
