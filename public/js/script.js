@@ -35,5 +35,6 @@ const botReply = (text) => {
 socket.on('bot reply', (text) => {
   outputbot.textContent = text;
   botReply(text);
+  console.log(text);
 });
 

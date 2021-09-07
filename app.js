@@ -30,7 +30,7 @@ io.on('connection', function(socket){
             try{
                 const sessionId = uuid.v4();
                 const sessionClient = new dialogflow.SessionsClient({
-                    keyFilename: "./chatbotai-9oky-404cbb9f5a63.json",
+                    keyFilename: "./chatbotai-9oky-a2df0bd08024.json",
                 });
                 const sessionPath = sessionClient.projectAgentSessionPath(
                     projectId,
